@@ -1,0 +1,82 @@
+---
+import { site } from '../data/site';
+import PipBunny from './PipBunny.astro';
+import AppStoreBadge from './AppStoreBadge.astro';
+---
+<section class="hero wrap">
+  <div class="hero__copy">
+    <p class="badge hero__badge"><PipBunny size={20} /> Meet Pip!</p>
+    <h1 class="hero__title">{site.headline}</h1>
+    <p class="hero__lead">{site.description}</p>
+    <div class="hero__buttons">
+      <AppStoreBadge />
+    </div>
+    <ul class="hero__trust">
+      <li>10 free levels per run</li>
+      <li>Family-friendly puzzle</li>
+    </ul>
+  </div>
+
+  <div class="hero__visual" aria-hidden="true">
+    <div class="hero__frame">
+      <img
+        src="/screens/04-fresh.png"
+        alt=""
+        class="hero__shot"
+        width="1200"
+        height="588"
+        loading="eager"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: 56px;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero__badge { margin: 0; }
+  .hero__title {
+    font-size: clamp(16px, 2.6vw, 24px);
+    line-height: 1.55;
+    margin-top: 20px;
+    max-width: 520px;
+  }
+  .hero__lead {
+    font-size: 17.5px; line-height: 1.65;
+    color: var(--hl-ink-muted); margin: 20px 0 0; max-width: 480px;
+  }
+  .hero__buttons { margin-top: 28px; }
+  .hero__trust {
+    display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+    margin: 22px 0 0; padding: 0; list-style: none;
+    font-size: 13px; font-weight: 700; color: var(--hl-ink-muted);
+  }
+  .hero__trust li + li::before {
+    content: ''; display: inline-block; width: 5px; height: 5px;
+    border-radius: 50%; background: var(--hl-teal); margin-right: 18px; vertical-align: middle;
+  }
+
+  .hero__visual { display: flex; justify-content: center; }
+  .hero__frame {
+    width: 100%; max-width: 480px;
+    border: var(--hl-border); border-radius: var(--hl-radius-md);
+    box-shadow: var(--hl-shadow); overflow: hidden;
+    background: #9EE6D6;
+  }
+  .hero__shot {
+    display: block; width: 100%; height: auto;
+    image-rendering: pixelated;
+  }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 24px; padding-top: 36px; }
+    .hero__frame { max-width: 100%; }
+  }
+</style>

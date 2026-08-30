@@ -1,0 +1,89 @@
+---
+const steps = [
+  {
+    num: '01',
+    title: 'OBSERVE',
+    body: 'Look at the farm layout — paths, carrots, water spots, and goals. Every run grows a fresh puzzle.',
+    color: 'var(--hl-teal)',
+    img: '/assets/thumb-observe.png',
+  },
+  {
+    num: '02',
+    title: 'BUILD',
+    body: 'Tap or drag bright command blocks into a program. Start with steps and turns, then discover loops.',
+    color: 'var(--hl-block-turn)',
+    img: '/assets/thumb-build.png',
+  },
+  {
+    num: '03',
+    title: 'RUN',
+    body: 'Tap Run and watch Pip execute your plan. Earn stars, build combos, and keep your hearts!',
+    color: 'var(--hl-cta)',
+    img: '/assets/thumb-run.png',
+  },
+];
+---
+<section class="section wrap" id="gameplay">
+  <div class="how__head">
+    <p class="eyebrow">HOW IT WORKS</p>
+    <h2 class="h2">Observe. Build. Run.</h2>
+    <p class="lead">The core loop is simple — think like a programmer, play like a farmer.</p>
+  </div>
+  <ol class="how__steps">
+    {steps.map((s) => (
+      <li class="how__step" style={`--step-color: ${s.color}`}>
+        <div class="how__thumb">
+          <img src={s.img} alt="" loading="lazy" width="960" height="552" />
+        </div>
+        <span class="how__num">{s.num}</span>
+        <h3 class="how__title">{s.title}</h3>
+        <p class="how__body">{s.body}</p>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<style>
+  .how__head { max-width: 560px; }
+  .how__steps {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 18px; margin: 36px 0 0; padding: 0; list-style: none;
+  }
+  .how__step {
+    background: var(--hl-cream);
+    border: 3px solid var(--hl-ink);
+    border-radius: var(--hl-radius-card);
+    padding: 24px;
+    box-shadow: var(--hl-shadow-sm);
+  }
+  .how__thumb {
+    aspect-ratio: 16 / 9;
+    border: 2px solid var(--hl-ink);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--hl-mint);
+    margin-bottom: 14px;
+  }
+  .how__thumb img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+    object-position: center;
+    image-rendering: pixelated;
+    display: block;
+  }
+  .how__num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--step-color); color: #fff;
+    font-family: var(--hl-font-pixel); font-size: 8px;
+    border: 2px solid var(--hl-ink);
+  }
+  .how__title {
+    font-size: 11px; margin-top: 14px;
+  }
+  .how__body {
+    font-size: 14.5px; line-height: 1.6; color: var(--hl-ink-muted);
+    margin: 8px 0 0;
+  }
+  @media (max-width: 800px) { .how__steps { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,31 @@
+---
+interface Props { size?: number; showText?: boolean; }
+const { size = 34, showText = true } = Astro.props;
+---
+<a href="/" class="logo" aria-label="Harvest Loop home">
+  <img src="/icon/app-icon.png" width={size} height={size} alt="" class="logo__icon" />
+  {showText && <span class="logo__text">HARVEST LOOP</span>}
+</a>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--hl-ink);
+  }
+  .logo__icon {
+    border-radius: 10px;
+    border: 2px solid var(--hl-ink);
+    box-shadow: var(--hl-shadow-sm);
+  }
+  .logo__text {
+    font-family: var(--hl-font-pixel);
+    font-size: 9px;
+    line-height: 1.4;
+  }
+  @media (max-width: 480px) {
+    .logo__text { display: none; }
+  }
+</style>

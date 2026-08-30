@@ -1,0 +1,50 @@
+---
+import { site } from '../data/site';
+import PipBunny from './PipBunny.astro';
+---
+<section class="section wrap about" id="about">
+  <div class="about__grid">
+    <div>
+      <p class="eyebrow">ABOUT</p>
+      <h2 class="h2">Made by {site.studio}.</h2>
+      <p class="lead about__body">
+        {site.studioLegal} builds small, thoughtful apps and games. Harvest Loop started as a dream:
+        what if learning to think like a programmer felt as joyful as tending a tiny voxel farm?
+      </p>
+      <p class="about__body">
+        Meet <strong>Pip</strong>, the bouncy bunny who turns colorful command blocks into living programs.
+        Every run is a new puzzle, every solution a little celebration.
+      </p>
+    </div>
+    <div class="about__pip pixel-card">
+      <PipBunny size={96} />
+      <img src="/assets/icon-carrot.png" alt="" class="about__carrot" width="48" height="48" />
+      <p class="about__pip-label">Pip says hi! 👋</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about__grid {
+    display: grid; grid-template-columns: 1.2fr .8fr;
+    gap: 32px; align-items: center;
+  }
+  .about__body { margin-top: 14px; font-size: 16px; line-height: 1.65; color: var(--hl-ink-muted); }
+  .about__pip {
+    position: relative;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 32px; text-align: center;
+  }
+  .about__carrot {
+    position: absolute;
+    right: 24px; bottom: 56px;
+    image-rendering: pixelated;
+    transform: rotate(12deg);
+    filter: drop-shadow(0 3px 0 rgba(41, 64, 71, 0.2));
+  }
+  .about__pip-label {
+    font-family: var(--hl-font-pixel); font-size: 9px;
+    margin: 16px 0 0; color: var(--hl-purple);
+  }
+  @media (max-width: 720px) { .about__grid { grid-template-columns: 1fr; } }
+</style>

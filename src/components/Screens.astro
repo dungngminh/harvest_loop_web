@@ -1,0 +1,74 @@
+---
+import { site } from '../data/site';
+
+const files = [
+  '01-hero.png',
+  '02-blocks.png',
+  '03-loops.png',
+  '04-fresh.png',
+  '05-harvest.png',
+  '06-stars.png',
+] as const;
+
+const shots = site.screenshots.map((headline, i) => ({
+  headline,
+  src: `/screens/${files[i]}`,
+}));
+---
+<section class="section wrap" id="screens">
+  <div class="screens__head">
+    <div>
+      <p class="eyebrow">INSIDE THE GAME</p>
+      <h2 class="h2">Six frames of farm fun.</h2>
+    </div>
+    <p class="screens__note">Real gameplay from Puzzle Farming: Harvest Loop on iPhone and iPad.</p>
+  </div>
+  <ol class="screens__grid">
+    {shots.map((s) => (
+      <li class="screens__item">
+        <div class="screens__shot">
+          <img src={s.src} alt="" loading="lazy" width="1200" height="588" />
+        </div>
+        <h3 class="screens__headline">{s.headline}</h3>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<style>
+  .screens__head {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+  }
+  .screens__head .h2 { max-width: 480px; }
+  .screens__note {
+    font-size: 14px; color: var(--hl-ink-muted); max-width: 280px; margin: 0;
+  }
+  .screens__grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px; margin: 36px 0 0; padding: 0; list-style: none;
+  }
+  .screens__shot {
+    aspect-ratio: 16 / 9;
+    background: var(--hl-mint);
+    border: 3px solid var(--hl-ink);
+    border-radius: var(--hl-radius-sm);
+    overflow: hidden;
+    box-shadow: var(--hl-shadow-sm);
+  }
+  .screens__shot img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    image-rendering: pixelated;
+    background: var(--hl-mint);
+  }
+  .screens__headline {
+    font-family: var(--hl-font-pixel);
+    font-size: 8px; line-height: 1.5; margin-top: 12px;
+  }
+  @media (max-width: 900px) { .screens__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .screens__grid { grid-template-columns: 1fr; } }
+</style>

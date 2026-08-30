@@ -1,0 +1,41 @@
+---
+import { site } from '../data/site';
+import Logo from './Logo.astro';
+import AppStoreBadge from './AppStoreBadge.astro';
+---
+<header class="nav">
+  <div class="wrap nav__inner">
+    <Logo size={36} />
+    <nav class="nav__links" aria-label="Main">
+      <a href="/#features">Features</a>
+      <a href="/#gameplay">Gameplay</a>
+      <a href="/#screens">Screens</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/#about">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="pixel-btn pixel-btn--sm pixel-btn--play" href={site.appStore}>Download</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky; top: 0; z-index: 80;
+    background: color-mix(in srgb, var(--hl-mint) 88%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 3px solid var(--hl-ink);
+  }
+  .nav__inner {
+    display: flex; align-items: center; gap: 24px;
+    padding-top: 12px; padding-bottom: 12px;
+  }
+  .nav__links {
+    flex: 1; display: flex; align-items: center; gap: 20px;
+    font-size: 14px; font-weight: 700;
+  }
+  .nav__links a { color: var(--hl-ink-muted); }
+  .nav__links a:hover { color: var(--hl-ink); }
+  .nav__cta { flex: none; }
+  @media (max-width: 860px) { .nav__links { display: none; } .nav__inner { justify-content: space-between; } }
+</style>

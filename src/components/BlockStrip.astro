@@ -1,0 +1,41 @@
+---
+import CommandBlock from './CommandBlock.astro';
+
+const blocks = [
+  { kind: 'step' as const, label: 'STEP' },
+  { kind: 'turn' as const, label: 'TURN LEFT' },
+  { kind: 'water' as const, label: 'WATER' },
+  { kind: 'harvest' as const, label: 'HARVEST' },
+  { kind: 'repeat' as const, label: 'REPEAT' },
+  { kind: 'step' as const, label: 'STEP' },
+  { kind: 'turn' as const, label: 'TURN RIGHT' },
+  { kind: 'harvest' as const, label: 'HARVEST' },
+];
+const row = [...blocks, ...blocks];
+---
+<section class="strip" aria-hidden="true">
+  <div class="strip__track">
+    {row.map((b) => <CommandBlock kind={b.kind} label={b.label} compact />)}
+  </div>
+</section>
+
+<style>
+  .strip {
+    margin-top: 48px;
+    padding: 18px 0;
+    background: var(--hl-cream);
+    border-block: 3px solid var(--hl-ink);
+    overflow: hidden;
+  }
+  .strip__track {
+    display: flex; gap: 12px; width: max-content;
+    animation: marquee 28s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .strip__track { animation: none; flex-wrap: wrap; justify-content: center; width: auto; }
+  }
+</style>

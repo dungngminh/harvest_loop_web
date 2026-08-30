@@ -1,0 +1,12 @@
+---
+interface Props { size?: number; filled?: boolean; }
+const { size = 24, filled = true } = Astro.props;
+---
+<svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" class:list={[!filled && 'star--outline']}>
+  <path
+  fill={filled ? 'var(--hl-gold)' : 'none'}
+  stroke={filled ? 'var(--hl-ink)' : 'var(--hl-gold)'}
+  stroke-width="1.5"
+  d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"
+  />
+</svg>

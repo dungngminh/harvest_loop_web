@@ -1,0 +1,24 @@
+{
+  "name": "harvest-loop-web",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "generate:og": "python3 scripts/generate-og.py",
+    "generate:assets": "python3 scripts/generate-assets.py",
+    "generate:props": "python3 scripts/render-props.py",
+    "capture:screens": "bash scripts/capture-screens.sh",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.2",
+    "astro": "^6.3.1"
+  }
+}

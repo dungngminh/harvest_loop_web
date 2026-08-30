@@ -1,0 +1,61 @@
+---
+type BlockKind = 'step' | 'turn' | 'water' | 'harvest' | 'repeat' | 'if' | 'call';
+
+interface Props {
+  kind: BlockKind;
+  label?: string;
+  compact?: boolean;
+}
+
+const { kind, label, compact = false } = Astro.props;
+
+const colors: Record<BlockKind, string> = {
+  step: 'var(--hl-block-step)',
+  turn: 'var(--hl-block-turn)',
+  water: 'var(--hl-block-water)',
+  harvest: 'var(--hl-block-harvest)',
+  repeat: 'var(--hl-block-repeat)',
+  if: 'var(--hl-block-if)',
+  call: 'var(--hl-block-call)',
+};
+
+const defaults: Record<BlockKind, string> = {
+  step: 'STEP',
+  turn: 'TURN',
+  water: 'WATER',
+  harvest: 'HARVEST',
+  repeat: 'REPEAT',
+  if: 'IF',
+  call: 'CALL',
+};
+
+const text = label ?? defaults[kind];
+const bg = colors[kind];
+---
+<span class:list={['block', compact && 'block--compact']} style={`--block-bg: ${bg}`}>
+  {text}
+</span>
+
+<style>
+  .block {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    font-family: var(--hl-font-pixel);
+    font-size: 8px;
+    line-height: 1.4;
+    color: #fff;
+    background: var(--block-bg);
+    border: 3px solid var(--hl-ink);
+    border-radius: var(--hl-radius-sm);
+    box-shadow: var(--hl-shadow-sm);
+    white-space: nowrap;
+  }
+  .block--compact {
+    padding: 7px 12px;
+    font-size: 7px;
+    border-width: 2px;
+    box-shadow: 0 3px 0 rgba(41, 64, 71, 0.85);
+  }
+</style>

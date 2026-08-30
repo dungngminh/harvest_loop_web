@@ -1,0 +1,53 @@
+---
+const faqs = [
+  {
+    q: 'Who is Harvest Loop for?',
+    a: 'Harvest Loop is a family-friendly puzzle game for curious kids and playful adults. No prior coding experience is needed — just imagination and a love of cute farms.',
+  },
+  {
+    q: 'Do I need to know how to code?',
+    a: 'Not at all! You learn by arranging visual command blocks. Start with simple steps and turns, then discover loops as you play.',
+  },
+  {
+    q: 'What devices are supported?',
+    a: 'Harvest Loop is available on iPhone and iPad in landscape orientation. An internet connection is only needed for optional Game Center and in-app purchases.',
+  },
+  {
+    q: 'Is the game free?',
+    a: 'You can play the first 10 levels of each run for free. A one-time purchase unlocks the full endless game, and optional consumable hearts let you continue after game over.',
+  },
+  {
+    q: 'Does it use Game Center?',
+    a: 'Yes! You can optionally sign in to Game Center to submit high scores to the leaderboard. Game Center is managed entirely by Apple.',
+  },
+  {
+    q: 'Can my child play offline?',
+    a: 'Core gameplay works fully offline. Game Center and purchases require a network connection when you use those features.',
+  },
+];
+---
+<section class="section wrap faq" id="faq">
+  <p class="eyebrow">FAQ</p>
+  <h2 class="h2">Questions from the garden.</h2>
+  <dl class="faq__list">
+    {faqs.map((f) => (
+      <>
+        <dt class="faq__q">{f.q}</dt>
+        <dd class="faq__a">{f.a}</dd>
+      </>
+    ))}
+  </dl>
+</section>
+
+<style>
+  .faq__list { margin: 28px 0 0; }
+  .faq__q {
+    font-family: var(--hl-font-pixel);
+    font-size: 10px; line-height: 1.5;
+    margin: 20px 0 0;
+  }
+  .faq__a {
+    font-size: 15px; line-height: 1.65; color: var(--hl-ink-muted);
+    margin: 8px 0 0;
+  }
+</style>

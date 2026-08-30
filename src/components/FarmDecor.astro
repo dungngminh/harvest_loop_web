@@ -1,0 +1,57 @@
+---
+const carrots = [
+  { top: '12%', left: '4%', size: 48, rotate: -12, delay: 0 },
+  { top: '68%', left: '8%', size: 40, rotate: 8, delay: 1 },
+  { top: '22%', right: '5%', size: 44, rotate: 14, delay: 2 },
+  { top: '78%', right: '10%', size: 36, rotate: -6, delay: 3 },
+];
+---
+<div class="farm-decor" aria-hidden="true">
+  {carrots.map((c) => (
+    <img
+      src="/assets/icon-carrot.png"
+      alt=""
+      class="farm-decor__carrot"
+      width={c.size}
+      height={c.size}
+      style={`--top:${c.top};--left:${c.left ?? 'auto'};--right:${c.right ?? 'auto'};--rot:${c.rotate}deg;--delay:${c.delay}s`}
+      loading="lazy"
+    />
+  ))}
+</div>
+
+<style>
+  .farm-decor {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .farm-decor__carrot {
+    position: absolute;
+    top: var(--top);
+    left: var(--left);
+    right: var(--right);
+    width: auto;
+    height: auto;
+    opacity: 0.18;
+    transform: rotate(var(--rot));
+    filter: drop-shadow(0 4px 0 rgba(41, 64, 71, 0.12));
+    animation: bob 4.5s ease-in-out infinite;
+    animation-delay: var(--delay);
+    image-rendering: pixelated;
+  }
+  @keyframes bob {
+    0%, 100% { transform: rotate(var(--rot)) translateY(0); }
+    50% { transform: rotate(var(--rot)) translateY(-6px); }
+  }
+  @media (max-width: 900px) {
+    .farm-decor__carrot { opacity: 0.1; }
+    .farm-decor__carrot:nth-child(2),
+    .farm-decor__carrot:nth-child(4) { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .farm-decor__carrot { animation: none; }
+  }
+</style>

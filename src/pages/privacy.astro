@@ -1,0 +1,112 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { site } from '../data/site';
+---
+<Legal
+  title="Privacy Policy"
+  updated={site.legal.updated}
+  meta={`Applies to · ${site.storeName} for iOS`}
+  description="Harvest Loop keeps your game progress on your device. No account, no ads, no data selling — only anonymous diagnostics and optional Game Center."
+>
+  <div class="legal__panel">
+    <h2>The short version</h2>
+    <ul class="legal__checks">
+      <li>Your game progress, settings, and tutorial state stay on your device.</li>
+      <li>No account is required — we do not collect your name, email, or profile.</li>
+      <li>We collect anonymous, aggregated usage and crash data to improve the game.</li>
+      <li>No ads, no ad SDKs, no selling or sharing of your personal data. Ever.</li>
+      <li>Game Center and in-app purchases are handled entirely by Apple.</li>
+    </ul>
+  </div>
+
+  <h2>1 · Who is responsible</h2>
+  <p>
+    {site.studioLegal} is the data controller for the limited data described here. Contact:
+    <a href={`mailto:${site.email}`}>{site.email}</a>.
+  </p>
+
+  <h2>2 · What stays on your device</h2>
+  <p>
+    Everything you create while playing — saved runs, level progress within a run, sound and music
+    preferences, tutorial completion state, and high-score records stored locally — is written to your
+    device's local storage. This data is not uploaded to any Harvest Loop server, because we do not
+    operate a server for user game content.
+  </p>
+
+  <h2>3 · No account required</h2>
+  <p>
+    Harvest Loop does not require you to create an account, sign in, or provide an email address to play.
+    We do not collect contact information through the game unless you voluntarily email us for support.
+  </p>
+
+  <h2>4 · In-app purchases</h2>
+  <p>
+    Optional purchases (full game unlock and consumable hearts) are processed entirely by the Apple App Store.
+    We use RevenueCat solely to validate purchase receipts and unlock content you have bought. We never receive
+    your payment card, billing address, or full Apple account details — only the receipt token needed to confirm
+    your purchase and let you restore it on a new device.
+  </p>
+  <ul class="legal__items">
+    <li><strong>full_game</strong> — one-time non-consumable purchase that unlocks endless runs past the free level limit.</li>
+    <li><strong>lives_3</strong> — consumable purchase that refills hearts after game over.</li>
+  </ul>
+
+  <h2>5 · Game Center</h2>
+  <p>
+    If you choose to sign in to Game Center, your high scores may be submitted to Apple's Game Center
+    leaderboard ({site.bundleId}.highscore). Game Center is optional and managed entirely by Apple under
+    Apple's privacy policy. We do not control Apple's handling of your Game Center profile.
+  </p>
+
+  <h2>6 · What we collect</h2>
+  <p>To keep the game working and improve it, we may collect anonymous, aggregated diagnostics that are not linked to your identity:</p>
+  <ul class="legal__items">
+    <li><strong>Crash and error reports</strong> — device model, iOS version, app version, and technical stack traces.</li>
+    <li><strong>Gameplay event counters</strong> — for example "a level was completed" or "a block was added", as counts only. Never personal information or free-text input.</li>
+    <li><strong>Purchase validation tokens</strong> — receipt data from Apple needed to confirm purchases.</li>
+  </ul>
+  <p>
+    We do not collect your name, email, phone number, contacts, precise location, or advertising identifiers.
+    We do not attempt to re-identify anonymous data. There is no free-text input in core gameplay.
+  </p>
+
+  <h2>7 · Children and families</h2>
+  <p>
+    Harvest Loop is designed as a family-friendly puzzle game. We do not knowingly collect personal information
+    from children. The game contains no behavioral advertising, no third-party ad networks, and no social features
+    that expose personal data. Parents can contact us at {site.email} with any questions.
+  </p>
+
+  <h2>8 · Service providers</h2>
+  <p>We use a small number of processors strictly for the purposes above:</p>
+  <ul class="legal__items">
+    <li><strong>Apple</strong> — app distribution, in-app purchases, and Game Center.</li>
+    <li><strong>RevenueCat</strong> — purchase receipt validation and entitlement management.</li>
+    <li><strong>Analytics / crash reporting providers</strong> — anonymous diagnostics only, if enabled.</li>
+  </ul>
+
+  <h2>9 · Data retention and deletion</h2>
+  <p>
+    Local game data remains on your device until you delete the app or clear its storage. Anonymous analytics
+    data is retained only as long as needed for product improvement. To remove local data, delete Harvest Loop
+    from your device. To request deletion of any data we may hold, email {site.email}.
+  </p>
+
+  <h2>10 · Your rights</h2>
+  <p>
+    Depending on your location, you may have rights to access, correct, or delete personal data we hold.
+    Because we collect minimal data and no account is required, most requests can be fulfilled by deleting
+    the app. Contact us at {site.email} for any privacy-related request.
+  </p>
+
+  <h2>11 · Changes to this policy</h2>
+  <p>
+    We may update this policy from time to time. The "Last updated" date at the top reflects the most recent
+    revision. Continued use of the app after changes constitutes acceptance of the updated policy.
+  </p>
+
+  <div class="legal__contact">
+    <h2>Contact</h2>
+    <p>Questions about privacy? Email <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+  </div>
+</Legal>

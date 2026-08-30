@@ -1,0 +1,193 @@
+/* Harvest Loop design tokens — mirrored from BlockStyle.swift, HomeView, PixelStyle */
+
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('/fonts/PressStart2P.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --hl-mint: #9EE6D6;
+  --hl-mint-dark: #7DD4C2;
+  --hl-ink: #294047;
+  --hl-ink-muted: rgba(41, 64, 71, 0.75);
+  --hl-cream: #FAF8EB;
+  --hl-cta: #FA9914;
+  --hl-cta-dark: #E0880A;
+  --hl-play: #59A84D;
+  --hl-gold: #FABF24;
+  --hl-teal: #1A9E8F;
+  --hl-purple: #8C5299;
+  --hl-pink: #EB4D7A;
+  --hl-surface: #FFFFFF;
+
+  --hl-block-step: #73BF33;
+  --hl-block-turn: #338CE6;
+  --hl-block-water: #1AA6A6;
+  --hl-block-harvest: #F2991A;
+  --hl-block-repeat: #FA781A;
+  --hl-block-if: #4D9966;
+  --hl-block-call: #D9668C;
+
+  --hl-font-pixel: 'Press Start 2P', ui-monospace, monospace;
+  --hl-font-body: Nunito, system-ui, -apple-system, sans-serif;
+
+  --hl-radius-sm: 4px;
+  --hl-radius-md: 6px;
+  --hl-radius-card: 12px;
+  --hl-radius-panel: 20px;
+
+  --hl-shadow: 0 8px 0 rgba(41, 64, 71, 0.85);
+  --hl-shadow-sm: 0 4px 0 rgba(41, 64, 71, 0.85);
+  --hl-border: 5px solid var(--hl-ink);
+
+  --hl-gutter: 24px;
+  --hl-max: 1180px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--hl-mint);
+  color: var(--hl-ink);
+  font-family: var(--hl-font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.site-main,
+.nav,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+h1, h2, h3 { font-family: var(--hl-font-pixel); font-weight: 400; margin: 0; line-height: 1.4; }
+
+a { color: var(--hl-teal); text-decoration: none; }
+a:hover { color: var(--hl-ink); }
+
+img { display: block; max-width: 100%; height: auto; }
+
+:focus-visible {
+  outline: 3px solid var(--hl-cta);
+  outline-offset: 3px;
+  border-radius: var(--hl-radius-sm);
+}
+
+.wrap { max-width: var(--hl-max); margin: 0 auto; padding: 0 var(--hl-gutter); }
+.section { padding-top: 80px; }
+
+.eyebrow {
+  font-family: var(--hl-font-pixel);
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  color: var(--hl-teal);
+  text-transform: uppercase;
+}
+
+.h2 {
+  font-size: clamp(18px, 2.8vw, 26px);
+  line-height: 1.5;
+  margin-top: 14px;
+}
+
+.lead {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--hl-ink-muted);
+  text-wrap: pretty;
+}
+
+/* Pixel chrome utilities */
+.pixel-card {
+  background: var(--hl-cream);
+  border: var(--hl-border);
+  border-radius: var(--hl-radius-md);
+  box-shadow: var(--hl-shadow);
+}
+
+.pixel-card--sm {
+  border-width: 3px;
+  box-shadow: var(--hl-shadow-sm);
+}
+
+.pixel-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 22px;
+  font-family: var(--hl-font-pixel);
+  font-size: 10px;
+  line-height: 1.4;
+  color: #fff;
+  background: var(--hl-cta);
+  border: 3px solid var(--hl-ink);
+  border-radius: var(--hl-radius-sm);
+  box-shadow: var(--hl-shadow-sm);
+  cursor: pointer;
+  transition: transform 0.08s ease;
+  text-decoration: none;
+}
+
+.pixel-btn:hover {
+  color: #fff;
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(41, 64, 71, 0.85);
+}
+
+.pixel-btn--play { background: var(--hl-play); }
+.pixel-btn--teal { background: var(--hl-teal); }
+.pixel-btn--ghost {
+  background: var(--hl-cream);
+  color: var(--hl-ink);
+}
+
+.pixel-btn--sm {
+  padding: 10px 16px;
+  font-size: 8px;
+}
+
+.card {
+  background: var(--hl-cream);
+  border: 3px solid var(--hl-ink);
+  border-radius: var(--hl-radius-card);
+  padding: 22px;
+  box-shadow: var(--hl-shadow-sm);
+}
+
+.card__title {
+  font-family: var(--hl-font-pixel);
+  font-size: 11px;
+  line-height: 1.5;
+  margin-top: 14px;
+}
+
+.card__body {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--hl-ink-muted);
+  margin: 8px 0 0;
+  text-wrap: pretty;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: var(--hl-radius-panel);
+  background: var(--hl-purple);
+  color: #fff;
+  font-family: var(--hl-font-pixel);
+  font-size: 8px;
+  border: 2px solid var(--hl-ink);
+}

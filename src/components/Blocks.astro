@@ -1,0 +1,48 @@
+---
+import CommandBlock from './CommandBlock.astro';
+
+const blocks = [
+  { kind: 'step' as const, label: 'STEP', desc: 'Move Pip forward one tile.' },
+  { kind: 'turn' as const, label: 'TURN LEFT', desc: 'Rotate Pip to face a new direction.' },
+  { kind: 'water' as const, label: 'WATER', desc: 'Water a dry crop so it can grow.' },
+  { kind: 'harvest' as const, label: 'HARVEST', desc: 'Pick ripe carrots from the garden.' },
+  { kind: 'repeat' as const, label: 'REPEAT', desc: 'Loop a sequence — small program, big result!' },
+  { kind: 'if' as const, label: 'IF', desc: 'Make decisions based on what Pip sees.' },
+];
+---
+<section class="section wrap blocks" id="blocks">
+  <div class="blocks__head">
+    <p class="eyebrow">COMMAND BLOCKS</p>
+    <h2 class="h2">Colorful blocks, real coding ideas.</h2>
+    <p class="lead">Each block teaches a programming concept through play — no typing required.</p>
+  </div>
+  <div class="blocks__grid">
+    {blocks.map((b) => (
+      <article class="blocks__item">
+        <CommandBlock kind={b.kind} label={b.label} />
+        <p>{b.desc}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .blocks__head { max-width: 560px; }
+  .blocks__grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin-top: 32px;
+  }
+  .blocks__item {
+    background: var(--hl-cream);
+    border: 3px solid var(--hl-ink);
+    border-radius: var(--hl-radius-card);
+    padding: 20px;
+    box-shadow: var(--hl-shadow-sm);
+  }
+  .blocks__item p {
+    font-size: 14px; line-height: 1.55; color: var(--hl-ink-muted);
+    margin: 12px 0 0;
+  }
+  @media (max-width: 800px) { .blocks__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .blocks__grid { grid-template-columns: 1fr; } }
+</style>

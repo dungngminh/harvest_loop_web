@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://harvest-loop-web.vercel.app/sitemap-index.xml

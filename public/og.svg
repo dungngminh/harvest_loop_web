@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#9EE6D6"/>
+  <rect x="60" y="60" width="1080" height="510" rx="12" fill="#FAF8EB" stroke="#294047" stroke-width="8"/>
+  <text x="100" y="200" font-family="monospace" font-size="42" font-weight="bold" fill="#294047">HARVEST LOOP</text>
+  <text x="100" y="280" font-family="sans-serif" font-size="36" fill="#1A9E8F">Learn Coding Through Farming</text>
+  <text x="100" y="360" font-family="sans-serif" font-size="28" fill="#294047" opacity="0.8">Code a clever path. Grow the farm.</text>
+  <rect x="100" y="400" width="200" height="56" rx="6" fill="#FA9914" stroke="#294047" stroke-width="4"/>
+  <text x="200" y="438" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#fff">App Store</text>
+  <circle cx="920" cy="315" r="120" fill="#73BF33" stroke="#294047" stroke-width="6"/>
+  <text x="920" y="330" text-anchor="middle" font-size="80">=0</text>
+</svg>

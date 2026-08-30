@@ -1,0 +1,17 @@
+---
+interface Props { class?: string; }
+const { class: className } = Astro.props;
+---
+<div class:list={['pixel-card-wrap', className]}>
+  <slot />
+</div>
+
+<style>
+  .pixel-card-wrap {
+    background: var(--hl-cream);
+    border: var(--hl-border);
+    border-radius: var(--hl-radius-md);
+    box-shadow: var(--hl-shadow);
+    padding: 28px;
+  }
+</style>

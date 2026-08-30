@@ -1,0 +1,83 @@
+---
+import { site } from '../data/site';
+import CommandBlock from './CommandBlock.astro';
+import PipBunny from './PipBunny.astro';
+import Star from './Star.astro';
+
+type Icon =
+  | { kind: 'blocks'; blocks: Array<'step' | 'turn' | 'water' | 'harvest' | 'repeat'> }
+  | { kind: 'block'; block: 'step' | 'turn' | 'water' | 'harvest' | 'repeat' }
+  | { kind: 'carrot' }
+  | { kind: 'stars' }
+  | { kind: 'pip' };
+
+const icons: Icon[] = [
+  { kind: 'blocks', blocks: ['step', 'turn'] },
+  { kind: 'block', block: 'repeat' },
+  { kind: 'carrot' },
+  { kind: 'stars' },
+  { kind: 'blocks', blocks: ['harvest', 'step'] },
+  { kind: 'pip' },
+];
+---
+<section class="section wrap" id="features">
+  <div class="features__head">
+    <p class="eyebrow">WHAT IT DOES</p>
+    <h2 class="h2">Cute, clever, and rewarding.</h2>
+    <p class="lead">A colorful farming puzzle where a tiny program brings Pip's world to life.</p>
+  </div>
+  <div class="features__grid">
+    {site.features.map((f, i) => {
+      const icon = icons[i];
+      return (
+        <article class="card">
+          <div class="card__icon" aria-hidden="true">
+            {icon.kind === 'blocks' && icon.blocks.map((b) => <CommandBlock kind={b} compact />)}
+            {icon.kind === 'block' && <CommandBlock kind={icon.block} compact />}
+            {icon.kind === 'carrot' && (
+              <img src="/assets/icon-carrot.png" alt="" width="40" height="40" loading="lazy" />
+            )}
+            {icon.kind === 'stars' && (
+              <div class="card__stars">
+                <Star size={22} /><Star size={22} /><Star size={22} />
+              </div>
+            )}
+            {icon.kind === 'pip' && <PipBunny size={40} />}
+          </div>
+          <h3 class="card__title">{f.title}</h3>
+          <p class="card__body">{f.body}</p>
+        </article>
+      );
+    })}
+  </div>
+</section>
+
+<style>
+  .features__head { max-width: 620px; }
+  .features__grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin-top: 34px;
+  }
+  .card__icon {
+    min-height: 52px;
+    display: flex; align-items: center; justify-content: flex-start;
+    gap: 6px; flex-wrap: wrap;
+    padding: 8px 10px;
+    background: var(--hl-mint);
+    border: 2px solid var(--hl-ink);
+    border-radius: 10px;
+    width: fit-content;
+    max-width: 100%;
+  }
+  .card__icon img {
+    display: block;
+    width: 40px; height: 40px;
+    object-fit: contain;
+    image-rendering: pixelated;
+  }
+  .card__stars {
+    display: flex; align-items: center; gap: 4px;
+  }
+  @media (max-width: 980px) { .features__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .features__grid { grid-template-columns: 1fr; } }
+</style>

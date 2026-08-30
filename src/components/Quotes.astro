@@ -1,0 +1,59 @@
+---
+import { site } from '../data/site';
+import PipBunny from './PipBunny.astro';
+---
+<section class="section wrap quotes">
+  <div class="quotes__inner pixel-card">
+    <div class="quotes__pip-wrap">
+      <PipBunny size={56} />
+      <img src="/assets/icon-carrot.png" alt="" class="quotes__carrot" width="32" height="32" />
+    </div>
+    <blockquote class="quotes__text" id="pip-quote">{site.quotes[0]}</blockquote>
+    <p class="quotes__attr">— Pip</p>
+  </div>
+</section>
+
+<script>
+  const quotes = [
+    'Nom nom~ any carrots today? 🥕',
+    'One hop, one munch!',
+    'The garden is waiting for you~',
+    'Boing boing~ wanna farm with me?',
+    'Crunchy carrots, who could resist!',
+    'What a lovely day — let\'s go out!',
+    'My ears are long to hear carrots grow~',
+  ];
+  let i = 0;
+  const el = document.getElementById('pip-quote');
+  if (el && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    setInterval(() => {
+      i = (i + 1) % quotes.length;
+      el.textContent = quotes[i];
+    }, 4000);
+  }
+</script>
+
+<style>
+  .quotes__inner {
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; padding: 40px 32px; max-width: 640px; margin: 0 auto;
+  }
+  .quotes__pip-wrap {
+    position: relative;
+    width: 72px; height: 72px;
+  }
+  .quotes__carrot {
+    position: absolute;
+    right: -18px; bottom: -4px;
+    image-rendering: pixelated;
+    transform: rotate(10deg);
+  }
+  .quotes__text {
+    font-size: 18px; line-height: 1.6; font-style: italic;
+    color: var(--hl-ink); margin: 20px 0 0; max-width: 480px;
+  }
+  .quotes__attr {
+    font-family: var(--hl-font-pixel); font-size: 9px;
+    color: var(--hl-purple); margin: 14px 0 0;
+  }
+</style>

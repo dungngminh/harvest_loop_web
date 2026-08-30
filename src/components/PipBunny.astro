@@ -1,0 +1,50 @@
+---
+interface Props { size?: number; }
+const { size = 64 } = Astro.props;
+
+const rows = [
+  '..KK........KK..',
+  '.KPPK......KPPK.',
+  '.KPPK......KPPK.',
+  '.KPPK......KPPK.',
+  '.KPPK......KPPK.',
+  '.KWWK......KWWK.',
+  '.KWWKKKKKKKKWWK.',
+  'KWWWWWWWWWWWWWWK',
+  'KWWKKWWWWWWKKWWK',
+  'KWWKKWWWWWWKKWWK',
+  'KWWWWWWPPWWWWWWK',
+  'KWWWWWPPPPWWWWWK',
+  'KWCCCWWWWWWCCCWK',
+  '.KWCCCCCCCCCCWK.',
+  '..KKWWWWWWWWKK..',
+  '....KKKKKKKK....',
+];
+
+const colors: Record<string, string> = {
+  K: '#1A1A1F',
+  W: '#FCFCF8',
+  P: '#FA9EB8',
+  C: '#F2E3C7',
+};
+
+const pixels: { x: number; y: number; fill: string }[] = [];
+rows.forEach((row, y) => {
+  [...row].forEach((ch, x) => {
+    const fill = colors[ch];
+    if (fill) pixels.push({ x, y, fill });
+  });
+});
+---
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 16 16"
+  shape-rendering="crispEdges"
+  role="img"
+  aria-label="Pip the bunny"
+>
+  {pixels.map((p) => (
+    <rect x={p.x} y={p.y} width="1" height="1" fill={p.fill} />
+  ))}
+</svg>

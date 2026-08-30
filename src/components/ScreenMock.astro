@@ -1,0 +1,106 @@
+---
+type Variant = 'hero' | 'blocks' | 'loops' | 'fresh' | 'harvest' | 'stars';
+
+interface Props { variant: Variant; }
+
+const { variant } = Astro.props;
+---
+<div class={`mock mock--${variant}`} aria-hidden="true">
+  <div class="mock__frame">
+    <div class="mock__ui">
+      {variant === 'hero' && (
+        <>
+          <div class="mock__farm mock__farm--wide"></div>
+          <div class="mock__pip"></div>
+        </>
+      )}
+      {variant === 'blocks' && (
+        <div class="mock__program">
+          <span class="b b--step">STEP</span>
+          <span class="b b--turn">TURN</span>
+          <span class="b b--harvest">HARVEST</span>
+          <span class="mock__run">RUN ▶</span>
+        </div>
+      )}
+      {variant === 'loops' && (
+        <div class="mock__program">
+          <span class="b b--repeat">REPEAT ×3</span>
+          <span class="b b--step">STEP</span>
+          <span class="b b--harvest">HARVEST</span>
+        </div>
+      )}
+      {variant === 'fresh' && <div class="mock__farm mock__farm--new"></div>}
+      {variant === 'harvest' && (
+        <>
+          <div class="mock__farm mock__farm--wet"></div>
+          <span class="mock__splash">💧</span>
+        </>
+      )}
+      {variant === 'stars' && (
+        <div class="mock__stars">
+          <span>★</span><span>★</span><span>★</span>
+          <p>LEVEL CLEAR!</p>
+        </div>
+      )}
+    </div>
+  </div>
+</div>
+
+<style>
+  .mock__frame {
+    aspect-ratio: 16 / 9;
+    background: var(--hl-mint);
+    border: 3px solid var(--hl-ink);
+    border-radius: var(--hl-radius-sm);
+    overflow: hidden;
+    box-shadow: var(--hl-shadow-sm);
+  }
+  .mock__ui {
+    position: relative; width: 100%; height: 100%;
+    background: linear-gradient(180deg, #B8EDE4, #9EE6D6 50%, #73BF33 85%);
+  }
+  .mock__farm {
+    position: absolute; inset: 20% 10% 15%;
+    background: repeating-linear-gradient(90deg, #8B5E3C 0 14%, #73BF33 14% 28%);
+    border: 2px solid var(--hl-ink); border-radius: 4px;
+  }
+  .mock__farm--new { inset: 15% 8% 12%; opacity: .9; }
+  .mock__farm--wet {
+    background: repeating-linear-gradient(90deg, #6B4A30 0 14%, #59A84D 14% 28%);
+  }
+  .mock__pip {
+    position: absolute; left: 45%; bottom: 30%;
+    width: 24px; height: 24px; background: #FCFCF8;
+    border: 2px solid var(--hl-ink); border-radius: 4px;
+  }
+  .mock__program {
+    position: absolute; left: 8%; right: 8%; bottom: 12%;
+    display: flex; gap: 6px; align-items: center; flex-wrap: wrap;
+  }
+  .b {
+    padding: 6px 10px; font-family: var(--hl-font-pixel); font-size: 6px;
+    color: #fff; border: 2px solid var(--hl-ink); border-radius: 3px;
+  }
+  .b--step { background: var(--hl-block-step); }
+  .b--turn { background: var(--hl-block-turn); }
+  .b--harvest { background: var(--hl-block-harvest); }
+  .b--repeat { background: var(--hl-block-repeat); }
+  .mock__run {
+    margin-left: auto; padding: 8px 14px;
+    background: var(--hl-play); color: #fff;
+    font-family: var(--hl-font-pixel); font-size: 7px;
+    border: 2px solid var(--hl-ink); border-radius: 4px;
+  }
+  .mock__splash {
+    position: absolute; right: 20%; top: 35%; font-size: 28px;
+  }
+  .mock__stars {
+    position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 8px;
+    background: rgba(250, 248, 235, 0.85);
+  }
+  .mock__stars span { font-size: 32px; color: var(--hl-gold); }
+  .mock__stars p {
+    font-family: var(--hl-font-pixel); font-size: 8px; margin: 0;
+  }
+</style>

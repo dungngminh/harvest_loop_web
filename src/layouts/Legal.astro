@@ -1,0 +1,83 @@
+---
+import Base from './Base.astro';
+
+interface Props { title: string; updated: string; meta?: string; description?: string; }
+const { title, updated, meta, description } = Astro.props;
+---
+<Base title={title} description={description}>
+  <article class="legal wrap">
+    <a class="legal__back" href="/">← back to Harvest Loop</a>
+    <h1 class="legal__title">{title}</h1>
+    <p class="legal__meta">
+      <span>Last updated · {updated}</span>
+      {meta && <span>{meta}</span>}
+    </p>
+    <slot />
+  </article>
+</Base>
+
+<style is:global>
+  .legal { padding-top: 48px; max-width: 812px; padding-bottom: 60px; }
+  .legal__back { font-size: 13.5px; font-weight: 700; color: var(--hl-teal); }
+  .legal__title {
+    font-family: var(--hl-font-pixel);
+    font-size: clamp(16px, 2.5vw, 22px);
+    line-height: 1.5;
+    margin: 18px 0 0;
+  }
+  .legal__meta {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    font-size: 13.5px; color: var(--hl-ink-muted); margin: 10px 0 0;
+  }
+  .legal h2 {
+    font-family: var(--hl-font-pixel);
+    font-size: 11px;
+    line-height: 1.5;
+    margin: 30px 0 0;
+  }
+  .legal p {
+    font-size: 15.5px; line-height: 1.75; margin: 10px 0 0; text-wrap: pretty;
+  }
+  .legal__intro {
+    margin-top: 22px; padding: 20px 22px; border-radius: var(--hl-radius-panel);
+    background: var(--hl-cream); border: 3px solid var(--hl-ink);
+    box-shadow: var(--hl-shadow-sm);
+    font-size: 15px; line-height: 1.7; color: var(--hl-ink-muted);
+  }
+  .legal__panel {
+    margin-top: 22px; padding: 24px 26px; border-radius: var(--hl-radius-card);
+    background: var(--hl-cream); border: 3px solid var(--hl-ink);
+    box-shadow: var(--hl-shadow-sm);
+  }
+  .legal__panel h2 { font-size: 11px; margin: 0; }
+  .legal__checks {
+    list-style: none; margin: 14px 0 0; padding: 0;
+    display: flex; flex-direction: column; gap: 11px;
+  }
+  .legal__checks li {
+    display: flex; gap: 11px; align-items: flex-start;
+    font-size: 15px; line-height: 1.6;
+  }
+  .legal__checks li::before {
+    content: '✓'; flex: none; width: 22px; height: 22px; border-radius: 6px;
+    background: var(--hl-mint); color: var(--hl-teal);
+    font-weight: 700; font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--hl-ink);
+  }
+  .legal__items {
+    list-style: none; margin: 12px 0 0; padding: 0;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .legal__items li {
+    padding: 13px 15px; border-radius: var(--hl-radius-card);
+    background: var(--hl-surface); border: 2px solid var(--hl-ink);
+    font-size: 14.5px; line-height: 1.6;
+  }
+  .legal__contact {
+    margin: 34px 0 0; padding: 22px 24px; border-radius: var(--hl-radius-panel);
+    background: var(--hl-cream); border: 3px solid var(--hl-ink);
+    box-shadow: var(--hl-shadow-sm);
+  }
+  .legal__contact h2 { font-size: 11px; margin: 0; }
+</style>
