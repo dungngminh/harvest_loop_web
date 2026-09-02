@@ -10,7 +10,7 @@ export const site = {
   studioLegal: 'KomKat Studio',
   email: 'komkat.studio@gmail.com',
   bundleId: 'me.komkatstudio.harvestloopgame',
-  appStore: 'https://apps.apple.com/app/harvest-loop/id0000000000',
+  appStore: 'https://apps.apple.com/us/app/puzzle-farming-harvest-loop/id6806744849',
   platforms: ['ios'] as const,
   legal: {
     updated: 'August 30, 2026',
